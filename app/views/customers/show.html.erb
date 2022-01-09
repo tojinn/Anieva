@@ -1,0 +1,27 @@
+<h1>マイページ</h1>
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <table class="table table-bordered table-condensed" >
+				<tbody>
+					<tr>
+						<td class="info col-xs-2">氏名</td>
+						<td class="text-left"><%= @customer.name %></td>
+					</tr>
+					<tr>
+						<td class="info">メールアドレス</td>
+						<td class="text-left"><%= @customer.email %></td>
+					</tr>
+					<tr>
+						<% if @customer.id == current_customer.id %>
+						 <p><%= link_to "プロフィール編集", edit_customer_path(@customer), class: "glyphicon glyphicon-pencil btn btn-success" %></p>
+						<% end %>
+					</tr>
+
+
+
+				</tbody>
+			</table>
+    </div>
+  </div>
+</div>
