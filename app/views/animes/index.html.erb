@@ -1,1 +1,7 @@
 <h1>アニメ一覧</h1>
+
+<%= link_to 'アニメ追加', new_anime_path %>
+
+<% @animes.each do |anime| %>
+ <%= link_to anime.title, anime_path(anime.id) %>
+<% end %>

@@ -1,0 +1,29 @@
+<h1>コメント一覧</h1>
+<div>
+  <% @comments.each do |post| %>
+   <p><%= post.comment %></p>
+   <div id="review-rating<%= post.id %>" data-score="<%= post.rate %>">評価：</div>
+    <script>
+    $('#review-rating<%= post.id %>').raty({
+      readOnly: true,
+      score: function() {
+        return $(this).attr('data-score');
+      },
+      path: '/assets/'
+    });
+   </script>
+   
+   <div class="average-review-rating" data-score=<%= post.average_rate %>></div>
+    <script>
+      $('.average-review-rating').raty({
+        readOnly: true,
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        score: function() {
+          return $(this).attr('data-score')
+        }
+      });
+    </script>
+  <% end %>
+</div>
