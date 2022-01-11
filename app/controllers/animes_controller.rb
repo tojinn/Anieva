@@ -1,6 +1,14 @@
 class AnimesController < ApplicationController
   def index
-    @animes = Anime.all
+    if params[:anime].present?
+     if params[:anime].empty?
+       @animes = Anime.all
+     else
+       @animes = Anime.where('title LIKE(?)', "%#{params[:anime][:keyword]}%")
+     end
+    else
+      @animes = Anime.all
+    end
   end
 
   def show
@@ -20,6 +28,13 @@ class AnimesController < ApplicationController
   end
 
   def edit
+  end
+
+  def search
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   private

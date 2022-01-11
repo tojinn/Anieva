@@ -1,7 +1,16 @@
 <h1>アニメ一覧</h1>
+　<div class="row mx-auto">
+    <div class="search mx-auto">
+      <%= form_with model: Anime.new, method: :get, class: "search__form" do |f| %>
+        <%= f.text_field :keyword, required: true, class: "search__form__input searchTerm" %>
+        <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+        </button>
+      <% end %>
+    </div>
+  </div>
 
 <%= link_to 'アニメ追加', new_anime_path %>
-
-<% @animes.each do |anime| %>
- <%= link_to anime.title, anime_path(anime.id) %>
-<% end %>
+<div id="index">
+ <%= render "animes/index", animes: @animes %>
+</div>

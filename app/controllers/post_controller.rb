@@ -8,6 +8,8 @@ class PostController < ApplicationController
   end
 
   def destroy
+    Post.find_by(id: params[:id]).destroy
+    redirect_to anime_path(params[:anime_id])
   end
 
   private

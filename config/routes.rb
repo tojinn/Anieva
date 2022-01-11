@@ -7,10 +7,6 @@ Rails.application.routes.draw do
     resources :post, only: [:create, :destroy]
     resources :comments, only: [:index]
    end
-   
    resources :customers, only: [:show, :edit, :update]
     get 'home/about' => 'homes#about'
-    
-    
-    
 end
