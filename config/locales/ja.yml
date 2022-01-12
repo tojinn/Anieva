@@ -1,6 +1,6 @@
 ja:
-  enums: 
-    contacts: # モデル名
+  enums:
+    contact: # モデル名
       subject: # カラム名
         site: 'サイトに関する質問など' # enumの値
         bug: '不具合などの報告' # enumの値

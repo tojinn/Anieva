@@ -27,7 +27,6 @@ class ContactsController < ApplicationController
   # セキュリティーのためにも一定時間で入力内容の削除を行ってもいいかもしれません。
   def create
     @contact = Contact.new(contact_params)
-    @contact.subject = 0
     if @contact.save
       ContactMailer.send_mail(@contact).deliver
       redirect_to new_contact_path
