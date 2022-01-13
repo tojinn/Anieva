@@ -67,3 +67,5 @@ gem 'font-awesome-sass', '~> 5.13'
 gem "dotenv-rails"
 gem 'rails-i18n'
 gem 'enum_help'
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"

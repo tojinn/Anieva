@@ -1,0 +1,5 @@
+<% if current_customer.bookmark?(anime) %>
+  <%= render 'bookmarks/unbookmark', anime: anime %>
+<% else %>
+  <%= render 'bookmarks/bookmark', anime: anime %>
+<% end %>

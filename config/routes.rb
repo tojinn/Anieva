@@ -6,10 +6,14 @@ Rails.application.routes.draw do
    resources :animes do
     resources :post, only: [:create, :destroy]
     resources :comments, only: [:index]
+    resource :bookmarks, only: [:create, :destroy]#後で変更
+     collection do
+      get :bookmarks
+    end
    end
    resources :customers, only: [:show, :edit, :update]
     get 'home/about' => 'homes#about'
-    
+
   resources :contacts, only: [:new, :create]
   post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
   post 'contacts/back', to: 'contacts#back', as: 'back'

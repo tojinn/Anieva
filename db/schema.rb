@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_12_070310) do
+ActiveRecord::Schema.define(version: 2022_01_13_090054) do
 
   create_table "animes", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "anime_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["anime_id"], name: "index_bookmarks_on_anime_id"
+    t.index ["customer_id", "anime_id"], name: "index_bookmarks_on_customer_id_and_anime_id", unique: true
+    t.index ["customer_id"], name: "index_bookmarks_on_customer_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -39,6 +49,7 @@ ActiveRecord::Schema.define(version: 2022_01_12_070310) do
     t.datetime "updated_at", null: false
     t.boolean "is_deleted"
     t.integer "gender", default: 0, null: false
+    t.string "profile_image_id"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end

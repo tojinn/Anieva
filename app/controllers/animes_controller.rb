@@ -37,6 +37,10 @@ class AnimesController < ApplicationController
     end
   end
 
+  def bookmarks
+    @customer_animes = current_customer.bookmarks&.map(&:anime)
+  end
+
   private
   def anime_params
     params.require(:anime).permit(:title)
