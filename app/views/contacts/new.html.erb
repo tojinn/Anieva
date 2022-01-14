@@ -1,31 +1,36 @@
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <%= form_with model: @contact do |f| %>
-        <div class="form-group">
-          <%= f.label :お名前 %>
-          <%= f.text_field :name, autofocus: true, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :メールアドレス %>
-          <%= f.text_field :email, autofocus: true, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :電話番号 %>
-          <%= f.text_field :phone_number, autofocus: true, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :お問い合わせ件名 %>
-          <%= f.select :subject, Contact.subjects_i18n.invert, include_blank: "選択して下さい" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :お問い合わせ内容 %>
-          <%= f.text_area :message, size: '10x10', class: 'form-control' %>
-        </div>
-        <div>
-          <%= f.submit '入力内容確認' %>
-        </div>
-      <% end %>
-    </div>
+    <h1 class="mx-auto pt-3 pb-3">お問い合わせフォーム</h1>
+  </div>
+  <div class="col-8 mx-auto mb-4">
+    <div class="card ">
+      <div class="card-body login-card-body">
+        <%= form_with model: @contact do |f| %>
+          <div class="form-group">
+            <%= f.label :お名前 %>
+            <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :メールアドレス %>
+            <%= f.text_field :email, autofocus: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :電話番号 %>
+            <%= f.text_field :phone_number, autofocus: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :お問い合わせ件名 %>
+            <%= f.select :subject, Contact.subjects_i18n.invert, include_blank: "選択して下さい" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :お問い合わせ内容 %>
+            <%= f.text_area :message, size: '10x10', class: 'form-control' %>
+          </div>
+          <div>
+            <%= f.submit '入力内容確認' %>
+          </div>
+        <% end %>
+      </div>
+  </div>
   </div>
 </div>

@@ -1,11 +1,18 @@
-<h1>コメント一覧</h1>
+
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <div>
-        <% @comments.each do |post| %>
-         <p><%= post.comment %></p>
+    <h1 class="mx-auto pt-3 pb-2"><%= @anime.title %></h1>
+  </div>
+  <div class='row'>
+    <div id="average-review-rating" class="mx-auto pt-2 pb-2" data-score=<%= @comments.average(:rate).to_f.round(1) %>></div>
+  </div>
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div>
+      <% @comments.each do |post| %>
+      <div class="card mt-3 mb-3">
+        <div class="card-body login-card-body">
          <div id="review-rating<%= post.id %>" data-score="<%= post.rate %>">評価：</div>
+         <p><%= post.comment %></p>
           <% if post.customer == current_customer %>
             <div>
              <%= link_to "削除", anime_post_path(post.anime, post), method: :delete %>
@@ -20,13 +27,13 @@
             path: '/assets/'
           });
          </script>
-
-        <% end %>
+        </div>
       </div>
+      <% end %>
     </div>
   </div>
 </div>
-<div id="average-review-rating" data-score=<%= @comments.average(:rate).to_f.round(1) %>></div>
+
 
 <script>
  $('#average-review-rating').raty({

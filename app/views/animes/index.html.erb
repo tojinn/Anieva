@@ -1,16 +1,24 @@
-<h1>アニメ一覧</h1>
-　<div class="row mx-auto">
-    <div class="search mx-auto">
-      <%= form_with model: Anime.new, method: :get, class: "search__form" do |f| %>
-        <%= f.text_field :keyword, required: true, class: "search__form__input searchTerm" %>
-        <button type="submit" class="searchButton">
-        <i class="fa fa-search"></i>
-        </button>
-      <% end %>
+<div class="container">
+  <div class="row">
+    <h1 class="mx-auto pt-3 pb-1">アニメ一覧</h1>
+  </div>
+  　<div class="container">
+        <%= form_with model: Anime.new, method: :get, class: "search__form" do |f| %>
+          <div class="input-group">
+            <%= f.text_field :keyword, required: true, class: " search__form__input form-control" %>
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="submit">
+               <i class="fas fa-search"></i>
+              </button>
+            </span>
+          </div>
+        <% end %>
+      <%#= link_to 'アニメ追加', new_anime_path %>
+      <div class='col-6 mx-auto mb-4'>
+        <div id="index">
+         <%= render "animes/index", animes: @animes %>
+        </div>
+      </div>
     </div>
   </div>
-
-<%= link_to 'アニメ追加', new_anime_path %>
-<div id="index">
- <%= render "animes/index", animes: @animes %>
 </div>
