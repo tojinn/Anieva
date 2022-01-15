@@ -11,6 +11,7 @@
       <% @comments.each do |post| %>
       <div class="card mt-3 mb-3">
         <div class="card-body login-card-body">
+          <div class="mb-3"><%= link_to customer_path(post.customer.id) do %><%= post.customer.name %><% end %></div>
          <div id="review-rating<%= post.id %>" data-score="<%= post.rate %>">評価：</div>
          <p><%= post.comment %></p>
           <% if post.customer == current_customer %>

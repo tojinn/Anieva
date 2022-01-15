@@ -1,7 +1,22 @@
-<div class="row">
-  <div class="col-12">
-    <div class="row">
-      <%= render "animes/index", animes: @customer_animes %>
+<div class="container">
+  <div class="row">
+    <h1 class="mx-auto pt-3 pb-1">ブックマークしたアニメ一覧</h1>
+  </div>
+  <div class="container">
+    <div class="row result">
+    <div class="col-11 mx-auto">
+      <div class="d-flex align-content-start flex-wrap mt-4">
+        <% if @animes.present? %>
+          <% @animes.each do |anime| %>
+          <div class="mx-5 my-4 out-line">
+           <p><%= link_to anime.title, anime_path(anime.id) %></p>
+          </div>
+          <% end %>
+        <% else %>
+          <p class="mx-auto white">ブックマークしたアニメがありません</p>
+        <% end %>
+      </div>
     </div>
+</div>
   </div>
 </div>

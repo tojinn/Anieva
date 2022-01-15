@@ -11,4 +11,24 @@ class Customer < ApplicationRecord
   def bookmark?(anime)
     bookmarks.find_by(anime_id:anime.id).present?
   end
+
+  #フォロー機能
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_of_relationships, source: :follower
+
+  # フォローしたときの処理
+  def follow(customer_id)
+    relationships.create(followed_id: customer_id)
+  end
+  # フォローを外すときの処理
+  def unfollow(customer_id)
+    relationships.find_by(followed_id: customer_id).destroy
+  end
+  # フォローしているか判定
+  def following?(customer)
+    followings.include?(customer)
+  end
+
 end

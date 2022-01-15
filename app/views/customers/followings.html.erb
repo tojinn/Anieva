@@ -1,0 +1,33 @@
+ <h2>Follow Users</h2>
+     <% if @following_customers.exists? %>
+     <table class="table">
+      <thead>
+   　  <tr>
+     　 <th>image</th>
+     　 <th>name</th>
+     　 <th colspan="3"></th>
+   　　 </tr>
+ 　　　 </thead>
+     <tbody>
+      <% @following_customers.each do |customer| %>
+       <tr>
+        <td><%= customer.name %></td>
+        <td><%= "フォロー数: #{customer.follower.count}" %></td>
+        <td><%= "フォロワー数: #{customer.followings.count}" %></td>
+        <td>
+          <% unless current_customer == customer %>
+           <% if current_customer.following?(customer) %>
+             <%= link_to "フォローを外す", customer_relationships_path(@customer.id), method: :delete %>
+            <% else %>
+             <%= link_to "フォロー", customer_relationships_path(@customer.id), method: :POST %>
+            <% end %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Show', customer_path(@customer.id), class: "user_#{customer.id}" %></td>
+       </tr>
+      <% end %>
+     </tbody>
+     </table>
+    <% else %>
+        <p>ユーザーはいません</p>
+    <% end %>

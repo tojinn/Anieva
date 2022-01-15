@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_13_090054) do
+ActiveRecord::Schema.define(version: 2022_01_15_164027) do
 
   create_table "animes", force: :cascade do |t|
     t.string "title"
@@ -61,6 +61,13 @@ ActiveRecord::Schema.define(version: 2022_01_13_090054) do
     t.integer "customer_id"
     t.integer "anime_id"
     t.float "rate"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

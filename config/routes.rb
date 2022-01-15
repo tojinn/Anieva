@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/followings'
+  get 'relationships/followers'
   get 'comments/index'
   devise_for :customers
   root to: 'homes#top'
@@ -11,8 +13,15 @@ Rails.application.routes.draw do
       get :bookmarks
     end
    end
-   resources :customers, only: [:show, :edit, :update]
-    get 'home/about' => 'homes#about'
+   resources :customers, only: [:show, :edit, :update] do
+    resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+     member do
+      get :follows, :followers
+     end
+   end
+   get 'home/about' => 'homes#about'
 
   resources :contacts, only: [:new, :create]
   post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
