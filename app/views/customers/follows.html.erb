@@ -12,8 +12,8 @@
       <% @following_customers.each do |customer| %>
        <tr>
         <td><%= customer.name %></td>
-        <td><%= "フォロー数: #{customer.follower.count}" %></td>
-        <td><%= "フォロワー数: #{customer.followings.count}" %></td>
+        <td><%= "フォロー数: #{customer.followings.count}" %></td>
+        <td><%= "フォロワー数: #{customer.followers.count}" %></td>
         <td>
           <% unless current_customer == customer %>
            <% if current_customer.following?(customer) %>

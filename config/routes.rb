@@ -15,10 +15,12 @@ Rails.application.routes.draw do
    end
    resources :customers, only: [:show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
-    get 'followings' => 'relationships#followings', as: 'followings'
-    get 'followers' => 'relationships#followers', as: 'followers'
+    #get 'followings' => 'relationships#followings', as: 'followings'
+   # get 'followers' => 'relationships#followers', as: 'followers'
      member do
-      get :follows, :followers
+      get :follows, :follows
+      get :followers, :followers
+       
      end
    end
    get 'home/about' => 'homes#about'
