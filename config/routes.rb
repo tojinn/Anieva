@@ -29,4 +29,12 @@ Rails.application.routes.draw do
   post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
   post 'contacts/back', to: 'contacts#back', as: 'back'
   get 'done', to: 'contacts#done', as: 'done'
+  
+  Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+     resources :animes, only: %i[index]
+    end 
+  end 
+end
 end
