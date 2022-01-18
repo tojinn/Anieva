@@ -12,7 +12,14 @@ class AnimesController < ApplicationController
   end
 
   def show
-    @anime = Anime.find(params[:id])
+    if params[:id].present?
+      @anime = Anime.find(params[:id])
+    else
+      @anime = Anime.new(anime_params)
+      Anime.save
+      redirect_to anime_path(anime.id)
+    end
+
     @post = Post.new
     @comments = Post.where(anime_id: @anime.id).pluck('comment')
   end

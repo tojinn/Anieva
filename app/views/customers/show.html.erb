@@ -1,40 +1,45 @@
-<h1>マイページ</h1>
-<div class='container'>
+<div class='container mt-5'>
+	<div class="row">
+   <h2 class="mx-auto pt-1 pb-4">ユーザー詳細ページ</h2>
+  </div>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <table class="table table-bordered table-condensed" >
 				<tbody>
 					<tr>
-						<td class="info col-xs-2">氏名</td>
-						<td class="text-left"><%= @customer.name %></td>
+						<th class="info col-xs-2">氏名</th>
+						<th class="text-left"><%= @customer.name %></th>
 					</tr>
 					<tr>
-						<td class="info">メールアドレス</td>
-						<td class="text-left"><%= @customer.email %></td>
+						<th class="info">メールアドレス</th>
+						<th class="text-left"><%= @customer.email %></th>
 					</tr>
 					<tr>
-						<% if @customer.id == current_customer.id %>
-						 <p><%= link_to "プロフィール編集", edit_customer_path(@customer), class: "glyphicon glyphicon-pencil btn btn-success" %></p>
-						<% end %>
+						<th>ブックマークしたアニメの数</th>
+						<th><%= link_to "#{@customer.bookmarks.count}", bookmarks_animes_path %></th>
 					</tr>
-					<div>
-						<p><%= link_to "ブックマーク", bookmarks_animes_path %></p>
-					</div>
-					<div>
-						<%= link_to "フォロー #{@customer.followings.count}", follows_customer_path(@customer) %>
-					</div>
-					<div>
-						<%= link_to "フォロワー #{@customer.followers.count}", followers_customer_path(@customer) %>
-					</div>
-					<div>
+					<tr>
+						<th>フォロー数</th>
+						<th><%= link_to "#{@customer.followings.count}", follows_customer_path(@customer) %></th>
+					</tr>
+					<tr>
+						<th>フォロワー数</th>
+						<th><%= link_to "#{@customer.followers.count}", followers_customer_path(@customer) %></th>
+					</tr>
+					<tr>
 						<% if current_customer.following?(@customer) %>
-						  <%= link_to "フォロー外す", customer_relationships_path(@customer.id), method: :delete %>
+						 <th><%= link_to "フォロー外す", customer_relationships_path(@customer.id), method: :delete %></th>
 						<% else %>
-						  <%= link_to "フォローする", customer_relationships_path(@customer.id), method: :post %>
+						 <th><%= link_to "フォローする", customer_relationships_path(@customer.id), method: :post %></th>
 						<% end %>
-					</div>
+					</tr>
 				</tbody>
 			</table>
+			<div>
+				<% if @customer.id == current_customer.id %>
+				 <p><%= link_to "プロフィール編集", edit_customer_path(@customer), class: "glyphicon glyphicon-pencil btn btn-success" %></p>
+				<% end %>
+			</div>
     </div>
   </div>
 </div>
