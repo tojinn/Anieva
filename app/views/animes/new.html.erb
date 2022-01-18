@@ -4,6 +4,9 @@
   <h4>タイトル</h4>
   <%= f.text_field :title %>
 
+  <h4>アニメ画像</h4>
+  <%= f.attachment_field :image, placeholder:"アニメ画像" %>
+
   <%= f.submit '投稿' %>
 
 <% end %>
