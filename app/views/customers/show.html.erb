@@ -26,15 +26,18 @@
 						<th>フォロワー数</th>
 						<th><%= link_to "#{@customer.followers.count}", followers_customer_path(@customer) %></th>
 					</tr>
-					<tr>
-						<% if current_customer.following?(@customer) %>
-						 <th><%= link_to "フォロー外す", customer_relationships_path(@customer.id), method: :delete %></th>
-						<% else %>
-						 <th><%= link_to "フォローする", customer_relationships_path(@customer.id), method: :post %></th>
-						<% end %>
-					</tr>
+
 				</tbody>
 			</table>
+			<div>
+				<% unless current_customer == @customer %>
+					<% if current_customer.following?(@customer) %>
+					 <div class="pb-4"><%= link_to "フォロー外す", customer_relationships_path(@customer.id), method: :delete, class: "btn btn-info" %></div>
+					<% else %>
+					 <div class="pb-4"><%= link_to "フォローする", customer_relationships_path(@customer.id), method: :post, class: "btn btn-outline-info" %></div>
+					<% end %>
+				<% end %>
+			</div>
 			<div>
 				<% if @customer.id == current_customer.id %>
 				 <p><%= link_to "プロフィール編集", edit_customer_path(@customer), class: "glyphicon glyphicon-pencil btn btn-success" %></p>
