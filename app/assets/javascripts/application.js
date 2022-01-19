@@ -33,18 +33,25 @@ const API_KEY = "8526c7df612efdbc139279c7e3cf8b4c";
 const ANNICT_API_KEY = "LdKPXoixYTg1OQ5etphaoz1b4UcGcYtawOAdcwYoS4I"
 $(function(){
   $('#btn').on('click', function() {
-           const params = $(".search__form__input").val()
+         const val = $(".search__form__input").val();
+    
+    var params = { filter_season: val };
 
+    api_call( params);
+  });
+});
+function api_call( params ){
+    console.log(params);
     $.ajax({
       url: "https://api.annict.com/v1/works"+"?access_token=" + ANNICT_API_KEY,
       type:"GET",
       crossDomain:true,
       dataType : 'json',
       headers:{"accept":"application/json","Access-Control-Allow-Origin":"*"},
-      data: {
-        filter_season:params
-      },
+      data: params,
+      
     }).done(function (data){
+      console.log(data);
       data.works.forEach(anime=>{
         console.log(anime);
         $('<div class="card u-card-flat"><div class="card-body"><img class="card-img-top'+anime.id+'" src="..." alt="Card image cap"><div class="card-body"><a href="/animes/'+anime.id+'" class="card-title'+anime.id+'">Card title</a><p class="card-text"></p></div></div>').appendTo("#title");
@@ -63,6 +70,4 @@ $(function(){
       //通信失敗
       alert('通信に失敗しました。');
     });
-
-    })
-});
+}
