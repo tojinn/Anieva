@@ -2,19 +2,7 @@
   <div class="col-11 mx-auto">
     <div class="d-flex align-content-start flex-wrap mt-4">
       <div class="container ">
-        <div class="card-deck md-3 text-center">
-          <% if animes.present? %>
-            <% animes.each do |anime| %>
-            <div class="card mb-4 shadow-sm">
-              <div class="card">
-               <p><%= link_to anime.title, anime_path(anime.id) %></p>
-              </div>
-            </div>
-            <% end %>
-          <% else %>
-            <p class="mx-auto white">検索に合致するものはありません</p>
-          <% end %>
-        </div>
+
       </div>
     </div>
   </div>
