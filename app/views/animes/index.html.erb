@@ -7,9 +7,9 @@
 　<div class="container">
     <%= form_with model: Anime.new, method: :get, class: "search__form" do |f| %>
       <div class="input-group">
-        <%= f.text_field :keyword, required: true, class: " search__form__input form-control" %>
+        <%= f.text_field :keyword, required: true, class: " search__form__input form-control", id: "form-1" %>
         <span class="input-group-btn">
-          <button class="btn btn-primary"  id="btn" type="submit">
+          <button class="btn btn-primary"  id="btn1" type="submit">
            <i class="fas fa-search"></i>
           </button>
         </span>
@@ -18,7 +18,7 @@
     <%= form_with model: Anime.new, method: :get do |f| %>
      <%= f.select :season, {'2020年春': "2020-spring", '2020年夏': 1, '2020年秋': 2, '2020年冬': 3,}, include_blank: "選択して下さい", class: "form-control" %>
       <span class="input-group-btn">
-        <button class="btn btn-primary"  id="btn" type="submit">
+        <button class="btn btn-primary"  id="btn2" type="submit">
          <p>検索する</p>
         </button>
       </span>

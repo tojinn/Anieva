@@ -16,3 +16,17 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+
+
+img:before {
+  background: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  content: ' broken image of 'attr(alt);
+  display: block;
+  left: 0;
+  padding: 10px;
+  position: absolute;
+  top: -10px;
+  width: 100%;
+}

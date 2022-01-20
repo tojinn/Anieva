@@ -21,37 +21,41 @@
 //= require turbolinks
 //= require_tree .
 
-
-$(function(){
-  $('#btn').on('click', function() {
-
-  });
-});
-
 // （API_KEY には、"取得したAPIキー" を記述）
 const API_KEY = "8526c7df612efdbc139279c7e3cf8b4c";
 const ANNICT_API_KEY = "LdKPXoixYTg1OQ5etphaoz1b4UcGcYtawOAdcwYoS4I"
 $(function(){
-  $('#btn').on('click', function() {
-         const val = $(".form-control").val();
+  $('#btn1').on('click', function() {
+         const val = $("#form-1").val();
+
+    var params = { filter_title: val };
+
+    api_call(params);
+  });
+});
+$(function(){
+  $('#btn2').on('click', function() {
+         const val = $("#anime_season").val();
 
     var params = { filter_season: val };
 
-    api_call( params);
+    api_call(params);
   });
 });
+
 function api_call( params ){
     console.log(params);
     $.ajax({
       url: "https://api.annict.com/v1/works"+"?access_token=" + ANNICT_API_KEY,
       type:"GET",
-      crossDomain:true,
-      dataType : 'json',
-      headers:{"accept":"application/json","Access-Control-Allow-Origin":"*"},
+      crossDomain: true,
+      dataType: 'json',
+      headers: {"accept":"application/json","Access-Control-Allow-Origin":"*"},
       data: params,
 
     }).done(function (data){
       console.log(data);
+      $("#title").empty();
       data.works.forEach(anime=>{
         console.log(anime);
         $('<div class="container pb-4"><div class="row"><div class="col-8 mx-auto"><div class="card u-card-flat"><div class="card-body mx-auto"><img class=" card-img-top'+anime.id+' img-fluid " src="..." alt="Card image cap"><div class="card-body"><a href="/animes/'+anime.id+'" class="card-title'+anime.id+'">Card title</a><p class="card-text"></p></div></div>').appendTo("#title");
