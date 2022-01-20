@@ -36,7 +36,7 @@ $(function(){
 $(function(){
   $('#btn2').on('click', function() {
          const val = $("#anime_season").val();
-
+         
     var params = { filter_season: val };
 
     api_call(params);
