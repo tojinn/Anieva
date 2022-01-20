@@ -33,7 +33,7 @@ const API_KEY = "8526c7df612efdbc139279c7e3cf8b4c";
 const ANNICT_API_KEY = "LdKPXoixYTg1OQ5etphaoz1b4UcGcYtawOAdcwYoS4I"
 $(function(){
   $('#btn').on('click', function() {
-         const val = $(".search__form__input").val();
+         const val = $(".form-control").val();
 
     var params = { filter_season: val };
 

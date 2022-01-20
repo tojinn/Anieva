@@ -2,7 +2,7 @@
   <div class="row">
     <h1 class="mx-auto pt-3 pb-1">アニメ一覧</h1>
   </div>
-  <ul id="title">
+
   </ul>
 　<div class="container">
     <%= form_with model: Anime.new, method: :get, class: "search__form" do |f| %>
@@ -15,6 +15,14 @@
         </span>
       </div>
     <% end %>
+    <%= form_with model: Anime.new, method: :get do |f| %>
+     <%= f.select :season, {'2020年春': "2020-spring", '2020年夏': 1, '2020年秋': 2, '2020年冬': 3,}, include_blank: "選択して下さい", class: "form-control" %>
+      <span class="input-group-btn">
+        <button class="btn btn-primary"  id="btn" type="submit">
+         <p>検索する</p>
+        </button>
+      </span>
+    <% end %>
     <div class='col-6 mx-auto mb-4'>
       <div id="index">
        <%= render "animes/index", animes: @animes %>
@@ -22,3 +30,4 @@
     </div>
   </div>
 </div>
+<ul id="title">
