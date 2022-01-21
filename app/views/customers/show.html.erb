@@ -1,45 +1,48 @@
-<div class='container mt-5'>
-	<div class="row">
-   <h2 class="mx-auto pt-1 pb-4">ユーザー詳細ページ</h2>
-  </div>
+<div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h1 class="mx-auto pt-3 pb-3">マイページ</h1>
+  </div>
+  <div class="col-8 mx-auto mb-4">
+    <div class="card ">
+      <div class="card-body login-card-body">
       <table class="table table-bordered table-condensed" >
-				<tbody>
-					<tr>
-						<th class="info col-xs-2">氏名</th>
-						<th class="text-left"><%= @customer.name %></th>
-					</tr>
-					<tr>
-						<th class="info">メールアドレス</th>
-						<th class="text-left"><%= @customer.email %></th>
-					</tr>
-					<tr>
-						<th>ブックマークしたアニメの数</th>
-						<th><%= link_to "#{@customer.bookmarks.count}", bookmarks_animes_path %></th>
-					</tr>
-					<tr>
-						<th>フォロー数</th>
-						<th><%= link_to "#{@customer.followings.count}", follows_customer_path(@customer) %></th>
-					</tr>
-					<tr>
-						<th>フォロワー数</th>
-						<th><%= link_to "#{@customer.followers.count}", followers_customer_path(@customer) %></th>
-					</tr>
-				</tbody>
-			</table>
-			<div>
+      <div>
+			</div>
+      <div class="border-bottom text-right pb-4" style="padding:10px;">
+        <% if @customer.id == current_customer.id %>
+				 	 <%= link_to edit_customer_path(@customer) do %>
+				 	 <h2 class="fas fa-cog text-dark"></h2>
+				 	 <% end %>
+				<% end %>
+				<%= attachment_image_tag @user, :profile_image, size: "200x200", format: 'jpeg', fallback: "no_image.jpg", class: "rounded-circle d-block mx-auto" %>
+      </div>
+        <div class="text-center pt-3 pb-4" font color="#2f4f4f"><h2><%= @customer.name %></h2></div>
+
+					<!--<tr>-->
+					<!--	<th class="info">メールアドレス</th>-->
+					<!--	<th class="text-left"><%#= @customer.email %></th>-->
+					<!--</tr>-->
+
+					<div class="d-flex justify-content-around">
+						<div>
+							<h1 class="fas fa-bookmark"></h1><br>
+							<h4 class="text-center"><%= link_to "#{@customer.bookmarks.count}", bookmarks_animes_path %></h4>
+						</div>
+						<div>
+							<h1 class="fas fa-user-plus"></h1><br>
+							<h4 class="text-center"><%= link_to "#{@customer.followings.count}", follows_customer_path(@customer) %></h4>
+						</div>
+						<div>
+							<h1 class="fas fa-users"></h1><br>
+							<h4 class="text-center"><%= link_to "#{@customer.followers.count}", followers_customer_path(@customer) %></h4>
+						</div>
+					</div>
 				<% unless current_customer == @customer %>
 					<% if current_customer.following?(@customer) %>
 					 <div class="pb-4"><%= link_to "フォロー外す", customer_relationships_path(@customer.id), method: :delete, class: "btn btn-info" %></div>
 					<% else %>
 					 <div class="pb-4"><%= link_to "フォローする", customer_relationships_path(@customer.id), method: :post, class: "btn btn-outline-info" %></div>
 					<% end %>
-				<% end %>
-			</div>
-			<div>
-				<% if @customer.id == current_customer.id %>
-				 <p><%= link_to "プロフィール編集", edit_customer_path(@customer), class: "glyphicon glyphicon-pencil btn btn-success" %></p>
 				<% end %>
 			</div>
     </div>
