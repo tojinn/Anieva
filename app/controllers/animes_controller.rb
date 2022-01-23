@@ -12,16 +12,16 @@ class AnimesController < ApplicationController
   end
 
   def show
-    if params[:id].present?
-      @anime = Anime.find(params[:id])
+    if Anime.exists?(anime_id: params[:id])
+      @animes = Anime.where(anime_id: params[:id])
     else
-      @anime = Anime.new(anime_params)
-      Anime.save
-      redirect_to anime_path(anime.id)
+      @anime = Anime.new(anime_id: params[:id])
+      @anime.save
+      @animes = Anime.where(anime_id: params[:id])
     end
-
+    @anime = Anime.where(anime_id: params[:id]).last
     @post = Post.new
-    @comments = Post.where(anime_id: @anime.id).pluck('comment')
+    @comments = Post.where(anime_id: params[:id]).pluck('comment')
   end
 
   def new
@@ -50,6 +50,10 @@ class AnimesController < ApplicationController
 
   private
   def anime_params
+<<<<<<< HEAD
     params.require(:anime).permit(:title, :image)
+=======
+    params.require(:anime).permit(:title, :anime_id)
+>>>>>>> origin/develop
   end
 end

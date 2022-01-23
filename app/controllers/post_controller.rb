@@ -4,7 +4,7 @@ class PostController < ApplicationController
     comment = current_customer.posts.new(post_params)
     comment.anime_id = anime.id
     comment.save
-    redirect_to anime_path(anime)
+    redirect_to anime_comments_path(anime.id)
   end
 
   def destroy

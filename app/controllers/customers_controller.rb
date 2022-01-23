@@ -27,8 +27,14 @@ class CustomersController < ApplicationController
   end
   private
 
+  def star
+    @customer = Customer.find(params[:id])
+    @anime = Anime.find(params[:anime_id])
+    @comments = Post.where(anime_id: @anime.id)
+  end
+
   def customer_params
-    params.require(:customer).permit(:name)
+    params.require(:customer).permit(:name, :profile_image)
   end
 end
 

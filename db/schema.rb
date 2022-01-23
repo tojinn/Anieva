@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_01_18_155400) do
+=======
+ActiveRecord::Schema.define(version: 2022_01_19_110906) do
+>>>>>>> origin/develop
 
   create_table "animes", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_id"
+<<<<<<< HEAD
+=======
+    t.integer "anime_id"
+>>>>>>> origin/develop
   end
 
   create_table "bookmarks", force: :cascade do |t|

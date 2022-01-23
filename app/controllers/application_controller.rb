@@ -1,6 +1,14 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def after_sign_in_path_for(customer)
+    customer_path(current_customer.id)
+  end
+
+  def after_sign_out_path_for(customer)
+    new_customer_session_path
+  end
+
   protected
 
   def configure_permitted_parameters
