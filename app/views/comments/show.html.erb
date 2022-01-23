@@ -1,0 +1,28 @@
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div>
+      <% @customer.posts.each do |post| %>
+      <div class="card mt-3 mb-3">
+        <div class="card-body login-card-body">
+          <div class="mb-3"><%= link_to anime_path(post.anime.id) do %><%= post.anime.id %><% end %></div>
+         <div id="review-rating<%= post.id %>" data-score="<%= post.rate %>">評価：</div>
+         <p><%= post.comment %></p>
+          <% if post.customer == current_customer %>
+            <div>
+             <%= link_to "削除", anime_post_path(post.anime, post), method: :delete %>
+            </div>
+          <% end %>
+          <script>
+          $('#review-rating<%= post.id %>').raty({
+            readOnly: true,
+            score: function() {
+              return $(this).attr('data-score');
+            },
+            path: '/assets/'
+          });
+         </script>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

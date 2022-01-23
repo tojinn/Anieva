@@ -1,3 +1,4 @@
+<div style="background-color:#f4fff4;">
 <div class="container" id="is_anime">
   <div class="row">
     <h1 class="mx-auto pt-3 pb-1">アニメ一覧</h1>
@@ -15,7 +16,7 @@
       </div>
     <% end %>
     <%= form_with model: Anime.new, method: :get, class: "mt-3" do |f| %>
-     <%= f.select :season, {'2022年春': "2022-spring", '2022年夏': "2022-summer", '2022年秋': "2022-autumn", '2022年冬': "2022-winter",'2021年春': "2021-spring", '2021年夏': "2021-summer", '2021年秋': "2021-autumn", '2021年冬': "2021-winter", '2020年春': "2020-spring", '2020年夏': "2020-summer", '2020年秋': "2020-autumn", '2020年冬': "2020-winter", '2019年春': "2019-spring", '2019年夏': "2019-summer", '2019年秋': "2019-autumn", '2019年冬': "2019-winter",}, include_blank: "選択して下さい", class: "form-control" %>
+     <%= f.select :season, {'2022年春': "2022-spring", '2022年夏': "2022-summer", '2022年秋': "2022-autumn", '2022年冬': "2022-winter",'2021年春': "2021-spring", '2021年夏': "2021-summer", '2021年秋': "2021-autumn", '2021年冬': "2021-winter", '2020年春': "2020-spring", '2020年夏': "2020-summer", '2020年秋': "2020-autumn", '2020年冬': "2020-winter", '2019年春': "2019-spring", '2019年夏': "2019-summer", '2019年秋': "2019-autumn", '2019年冬': "2019-winter",}, include_blank: "放送時期で検索", class: "form-control" %>
      <button class="btn btn-primary"  id="btn2" type="submit">検索する</button>
     <% end %>
     <div class='col-6 mx-auto mb-4'>
@@ -27,4 +28,5 @@
 </div>
 <div class="container container-m">
   <div class="card-deck" id="title">
+</div>
 </div>

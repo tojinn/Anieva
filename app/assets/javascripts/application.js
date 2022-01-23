@@ -79,12 +79,12 @@ $(function(){
             const url = new URL(anime.images.facebook.og_image_url);
             if (url.protocol === "http:") {
               console.log('true')
-              $('.card-img-top'+anime.id).attr("src",'/no_image.jpg');
+              $('.card-img-top'+anime.id).attr("src",'/noimage-760x460.png');
             }
           }
         } else {
           console.log('true')
-          $('.card-img-top'+anime.id).attr("src",'/no_image.jpg');
+          $('.card-img-top'+anime.id).attr("src",'/noimage-760x460.png');
         }
       });
     }).fail(function (data) {

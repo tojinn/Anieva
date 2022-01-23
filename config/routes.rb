@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
    resources :animes do
     resources :post, only: [:create, :destroy]
-    resources :comments, only: [:index]
+    resources :comments, only: [:index, :show]
     resource :bookmarks, only: [:create, :destroy]#後で変更
      collection do
       get :bookmarks
