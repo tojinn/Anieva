@@ -1,75 +1,71 @@
 <div class="container">
   <div class="row">
     <h1 class="mx-auto pt-5 pb-5">新規登録</h1>
-     </div>
-      <div class='col-6 mx-auto mb-4'>
-        <div class="card">
-          <div class="card-body login-card-body">
-            <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
-              <%= render "devise/shared/error_messages", resource: resource %>
+  </div>
+    <div class='col-6 mx-auto mb-4'>
+      <div class="card">
+        <div class="card-body login-card-body">
+          <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
 
-              <div class="field">
-                <%= f.label :名前 %><br />
-                <div class="input-group mb-3">
-                  <%= f.text_field :name, class: 'form-control', placeholder: 'name' %>
-                  <div class="input-group-append">
+            <div class="field">
+              <%= f.label :名前 %><br />
+              <div class="input-group mb-3">
+                <%= f.text_field :name, class: 'form-control', placeholder: 'name' %>
+                <div class="input-group-append">
                   <div class="input-group-text">
                    <span class="fas fa-user"></span>
                   </div>
-                  </div>
                 </div>
               </div>
+            </div>
 
-              <div class="field">
-                <%= f.label :メールアドレス %><br />
-                <div class="input-group mb-3">
-                  <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
-                  <div class="input-group-append">
+            <div class="field">
+              <%= f.label :メールアドレス %><br />
+              <div class="input-group mb-3">
+                <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
+                <div class="input-group-append">
                   <div class="input-group-text">
                    <span class="fas fa-envelope"></span>
                   </div>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <%= f.label :パスワード %>
+              <% if @minimum_password_length %>(<%= @minimum_password_length %> 文字以上)<% end %><br />
+              <div class="input-group mb-3">
+                <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                   <span class="fas fa-lock"></span>
                   </div>
                 </div>
               </div>
-              <div class="field">
-                <%= f.label :パスワード %>
-                <% if @minimum_password_length %>(<%= @minimum_password_length %> 文字以上)<% end %><br />
-                <div class="input-group mb-3">
-                  <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
-                  <div>
-                  </div>
-                  <div class="input-group-append">
-                  <div class="input-group-text">
-                   <span class="fas fa-lock"></span>
-                   </div>
-                   </div>
-                  </div>
-              </div>
+            </div>
 
-              <div class="field">
-                <%= f.label :パスワード再入力 %><br />
-                <div class="input-group mb-3">
-                  <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Password' %>
-                  <div class="input-group-append">
+            <div class="field">
+              <%= f.label :パスワード再入力 %><br />
+              <div class="input-group mb-3">
+                <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Password' %>
+                <div class="input-group-append">
                   <div class="input-group-text">
-                   <span class="fas fa-lock"></span>
-                   </div>
-                   </div>
+                    <span class="fas fa-lock"></span>
                   </div>
                 </div>
               </div>
-              <div class="field">
-                <div class='row'>
-                  <div class='col-6 mx-auto mb-4'>
-                    <%= f.submit "新規登録", class: 'btn btn-block btn-secondary' %>
-                  </div>
+            </div>
+            <div class="field">
+              <div class='row'>
+                <div class='col-6 mx-auto mb-4'>
+                  <%= f.submit "新規登録", class: 'btn btn-block btn-secondary' %>
                 </div>
               </div>
-            <% end %>
-            <div class='row'>
-              <div class='col-6 mx-auto mb-4'>
-               <%= render "devise/shared/links" %>
-              </div>
+            </div>
+          <% end %>
+          <div class='row'>
+            <div class='col-6 mx-auto mb-4'>
+             <%= render "devise/shared/links" %>
             </div>
           </div>
         </div>

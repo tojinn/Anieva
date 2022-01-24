@@ -46,7 +46,6 @@ $(function(){
   $(document).on('turbolinks:load',function(){
     const isAnime = document.getElementById('is_anime');
     if (!isAnime) return;
-
    const val = $("#anime_season").val();
    var params = { filter_season: "2022-spring" };
    api_call(params);

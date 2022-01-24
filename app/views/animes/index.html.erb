@@ -3,28 +3,6 @@
   <div class="row">
     <h1 class="mx-auto pt-3 pb-1">アニメ一覧</h1>
   </div>
-<<<<<<< HEAD
-
-    <ul id="title">
-
-    </ul>
-  　<div class="container">
-        <%= form_with model: Anime.new, method: :get, class: "search__form" do |f| %>
-          <div class="input-group">
-            <%= f.text_field :keyword, required: true, class: " search__form__input form-control" %>
-            <span class="input-group-btn">
-              <button class="btn btn-primary"  id="btn" type="submit">
-               <i class="fas fa-search"></i>
-              </button>
-            </span>
-          </div>
-        <% end %>
-      <%= link_to 'アニメを追加する', new_anime_path %>
-      <div class='col-12 mx-auto card-center'>
-        <div id="index">
-         <%= render "animes/index", animes: @animes %>
-        </div>
-=======
   </ul>
 　<div class="container">
     <%= form_with model: Anime.new, method: :get, class: "search__form" do |f| %>
@@ -44,7 +22,6 @@
     <div class='col-6 mx-auto mb-4'>
       <div id="index">
        <%= render "animes/index", animes: @animes %>
->>>>>>> origin/develop
       </div>
     </div>
   </div>

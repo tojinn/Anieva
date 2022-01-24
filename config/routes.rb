@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'chats/show'
   get 'relationships/followings'
   get 'relationships/followers'
   get 'comments/index'
@@ -15,8 +16,6 @@ Rails.application.routes.draw do
    end
    resources :customers, only: [:show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
-    #get 'followings' => 'relationships#followings', as: 'followings'
-   # get 'followers' => 'relationships#followers', as: 'followers'
      member do
       get :follows, :follows
       get :followers, :followers
@@ -31,10 +30,14 @@ Rails.application.routes.draw do
   get 'done', to: 'contacts#done', as: 'done'
   
   Rails.application.routes.draw do
+  get 'chats/show'
   namespace :api do
     namespace :v1 do
      resources :animes, only: %i[index]
     end 
   end 
 end
+  #DM機能
+  get 'chat/:id', to: 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
 end

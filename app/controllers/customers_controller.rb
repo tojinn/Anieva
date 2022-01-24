@@ -25,6 +25,7 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @follower_customers = @customer.followers
   end
+
   private
 
   def star
@@ -36,5 +37,6 @@ class CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:name, :profile_image)
   end
+
 end
 

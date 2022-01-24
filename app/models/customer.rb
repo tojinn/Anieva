@@ -31,5 +31,9 @@ class Customer < ApplicationRecord
   def following?(customer)
     followings.include?(customer)
   end
+  
+  #DM機能
+  has_many :user_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
 
 end

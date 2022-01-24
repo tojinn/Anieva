@@ -1,38 +1,12 @@
+<div style="background-color:#f4fff4;">
 <div class='container'>
   <div class='row'>
     <h1 class="mx-auto pt-3 pb-3">ユーザー詳細</h1>
   </div>
   <div class="col-8 mx-auto mb-4">
-    <div class="card ">
+    <div class="card">
       <div class="card-body login-card-body">
       <table class="table table-bordered table-condensed" >
-<<<<<<< HEAD
-				<tbody>
-					<tr>
-						<th class="info col-xs-2">氏名</th>
-						<th class="text-left"><%= @customer.name %></th>
-					</tr>
-					<tr>
-						<th class="info">メールアドレス</th>
-						<th class="text-left"><%= @customer.email %></th>
-					</tr>
-					<tr>
-						<th>ブックマークしたアニメの数</th>
-						<th><%= link_to "#{@customer.bookmarks.count}", bookmarks_animes_path %></th>
-					</tr>
-					<tr>
-						<th>フォロー数</th>
-						<th><%= link_to "#{@customer.followings.count}", follows_customer_path(@customer) %></th>
-					</tr>
-					<tr>
-						<th>フォロワー数</th>
-						<th><%= link_to "#{@customer.followers.count}", followers_customer_path(@customer) %></th>
-					</tr>
-
-				</tbody>
-			</table>
-			<div>
-=======
       <div>
 			</div>
       <div class="border-bottom text-right pb-4" style="padding:10px;">
@@ -49,7 +23,6 @@
 					<!--	<th class="info">メールアドレス</th>-->
 					<!--	<th class="text-left"><%#= @customer.email %>
 					<!--</tr>-->
-
 					<div class="d-flex justify-content-around">
 						<div>
 							<h1 class="fas fa-bookmark"></h1><br>
@@ -68,23 +41,19 @@
 							<h4 class="text-center"><%= link_to "a", anime_comment_path(@customer) %></h4>
 						</div>
 					</div>
->>>>>>> origin/develop
 				<% unless current_customer == @customer %>
 					<% if current_customer.following?(@customer) %>
 					 <div class="pb-4"><%= link_to "フォロー外す", customer_relationships_path(@customer.id), method: :delete, class: "btn btn-info" %></div>
 					<% else %>
 					 <div class="pb-4"><%= link_to "フォローする", customer_relationships_path(@customer.id), method: :post, class: "btn btn-outline-info" %></div>
 					<% end %>
-<<<<<<< HEAD
 				<% end %>
-			</div>
-			<div>
-				<% if @customer.id == current_customer.id %>
-				 <p><%= link_to "プロフィール編集", edit_customer_path(@customer), class: "glyphicon glyphicon-pencil btn btn-success" %></p>
-=======
->>>>>>> origin/develop
-				<% end %>
+
+				<% if current_customer != @customer && current_customer.following?(@customer) && @customer.following?(current_customer) %>
+          <%= link_to 'Begin Chat', chat_path(@customer.id) %>
+        <% end %>
 			</div>
     </div>
   </div>
+</div>
 </div>

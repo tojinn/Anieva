@@ -10,21 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2022_01_18_155400) do
-=======
-ActiveRecord::Schema.define(version: 2022_01_19_110906) do
->>>>>>> origin/develop
+ActiveRecord::Schema.define(version: 2022_01_24_075513) do
 
   create_table "animes", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_id"
-<<<<<<< HEAD
-=======
     t.integer "anime_id"
->>>>>>> origin/develop
   end
 
   create_table "bookmarks", force: :cascade do |t|
@@ -35,6 +28,14 @@ ActiveRecord::Schema.define(version: 2022_01_19_110906) do
     t.index ["anime_id"], name: "index_bookmarks_on_anime_id"
     t.index ["customer_id", "anime_id"], name: "index_bookmarks_on_customer_id_and_anime_id", unique: true
     t.index ["customer_id"], name: "index_bookmarks_on_customer_id"
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "room_id"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -56,7 +57,7 @@ ActiveRecord::Schema.define(version: 2022_01_19_110906) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_deleted"
+    t.boolean "is_deleted", default: false
     t.integer "gender", default: 0, null: false
     t.string "profile_image_id"
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -75,6 +76,18 @@ ActiveRecord::Schema.define(version: 2022_01_19_110906) do
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_rooms", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

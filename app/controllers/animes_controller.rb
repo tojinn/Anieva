@@ -1,5 +1,6 @@
 class AnimesController < ApplicationController
   def index
+
     if params[:anime].present?
      if params[:anime].empty?
        @animes = Anime.all
@@ -12,6 +13,7 @@ class AnimesController < ApplicationController
   end
 
   def show
+ 
     if Anime.exists?(anime_id: params[:id])
       @animes = Anime.where(anime_id: params[:id])
     else
@@ -50,10 +52,6 @@ class AnimesController < ApplicationController
 
   private
   def anime_params
-<<<<<<< HEAD
     params.require(:anime).permit(:title, :image)
-=======
-    params.require(:anime).permit(:title, :anime_id)
->>>>>>> origin/develop
   end
 end
