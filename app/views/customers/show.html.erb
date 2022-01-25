@@ -50,7 +50,7 @@
 				<% end %>
 
 				<% if current_customer != @customer && current_customer.following?(@customer) && @customer.following?(current_customer) %>
-          <%= link_to 'Begin Chat', chat_path(@customer.id) %>
+          <%= link_to 'チャットをする', chat_path(@customer.id), class: "btn btn-outline-info"%>
         <% end %>
 			</div>
     </div>

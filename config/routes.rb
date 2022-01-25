@@ -40,4 +40,9 @@ end
   #DM機能
   get 'chat/:id', to: 'chats#show', as: 'chat'
   resources :chats, only: [:create]
+  
+  # 退会確認画面
+  get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+  # 論理削除用のルーティング
+  patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
 end

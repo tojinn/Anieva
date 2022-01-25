@@ -35,5 +35,8 @@ class Customer < ApplicationRecord
   #DM機能
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
-
+  
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 end
