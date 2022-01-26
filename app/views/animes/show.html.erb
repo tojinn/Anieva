@@ -7,18 +7,16 @@
     <p><%= link_to "コメント一覧", anime_comments_path(@anime.id) %></p>
   </div>
 
-  <div>
-    <%# @comments.each do |comment| %>
-     <p><%#= comment %></p>
-    <%# end %>
-  </div>
   <%= form_with(model:[@anime,@post], url: anime_post_index_path(@anime.id), local: true) do |f| %>
     <div class="form-group">
      <%= f.text_area :comment, rows:'5',placeholder: "感想をここに", class: 'form-control mb-3' %>
-     <%# 評価のコード %>
-     <div id="evaluate_stars">
-     <%= f.submit "送信する", class: 'mb-3' %>
-    </div>
+      <% if customer_signed_in? %>
+        <div id="evaluate_stars">
+         <%= f.submit "送信する", class: 'mb-3' %>
+        </div>
+      <% else %>
+       評価を送信するにはログインしてください
+      <% end %>
   <% end %>
 </div>
 <script>
