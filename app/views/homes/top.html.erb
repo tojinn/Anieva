@@ -43,6 +43,7 @@
       </div>
     </div>
       <script>
+        $('#review-rating<%= anime.id %>').empty();
         $('#review-rating<%= anime.id %>').raty({
           readOnly: true,
           score: function() {

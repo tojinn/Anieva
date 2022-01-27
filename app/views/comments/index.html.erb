@@ -4,7 +4,14 @@
     <h1 class="mx-auto pt-3 pb-2"><%= @anime.title %></h1>
   </div>
   <div class='row'>
-    <div id="average-review-rating" class="mx-auto pt-2 pb-2" data-score=<%= @comments.average(:rate).to_f.round(1) %>></div>
+    <div class="card mt-3 mb-3 mx-auto">
+      <div class="card-body login-card-body">
+        <div class="d-flex justify-content-around">
+          <h4 class="mr-4 text-center">平均点</h4>
+          <div id="average-review-rating" class="mx-auto pt-2 pb-2 ml-3" data-score=<%= @comments.average(:rate).to_f.round(1) %>></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <div>
@@ -20,6 +27,7 @@
             </div>
           <% end %>
           <script>
+          $('#review-rating<%= post.id %>').empty();
           $('#review-rating<%= post.id %>').raty({
             readOnly: true,
             score: function() {
@@ -37,6 +45,7 @@
 
 
 <script>
+ $('#average-review-rating').empty();
  $('#average-review-rating').raty({
     size: 36,
     starOn: "<%= asset_path('star-on.png') %>",

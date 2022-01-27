@@ -49,6 +49,7 @@
                 </div>
               <% end %>
               <script>
+                $('#review-rating<%= post.id %>').empty();
                 $('#review-rating<%= post.id %>').raty({
                   readOnly: true,
                   score: function() {

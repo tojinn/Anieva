@@ -13,9 +13,13 @@
   </header>
 
   <body>
+    <div class="text-center">
+      <%= flash[:notice] %>
+    </div>
+
     <%= yield %>
   </body>
   <footer>
-    
+
   </footer>
 </html>
