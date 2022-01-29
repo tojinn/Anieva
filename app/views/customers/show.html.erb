@@ -38,7 +38,7 @@
 						</div>
 						<div>
 							<h1 class="fas fa-star"></h1>
-							<h4 class="text-center"><%= link_to "a", anime_comment_path(@customer) %></h4>
+							<h4 class="text-center"><%= link_to "#{@customer.posts.count}", anime_comment_path(@customer) %></h4>
 						</div>
 					</div>
 				<% unless current_customer == @customer %>
