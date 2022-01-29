@@ -1,22 +1,50 @@
+<script>
+  function get_animation_title( params ){
+    console.log(params);
+    $.ajax({
+      url: "https://api.annict.com/v1/works"+"?access_token=" + ANNICT_API_KEY + "&filter_ids=" + params,
+      type:"GET",
+      crossDomain:true,
+      dataType : 'json',
+      headers:{"accept":"application/json","Access-Control-Allow-Origin":"*"},
+    }).done(function (data){
+      console.log(data);
+      data.works.forEach(anime=>{
+        console.log(anime);
+        $('.card-title'+anime.id).text(anime.title);
+        $('.card-img-top'+anime.id).attr("src",anime.images.facebook.og_image_url);
+      });
+      // 位置
+    }).fail(function (data) {
+        //通信失敗
+        alert('通信に失敗しました。');
+    });
+  }
+</script>
 <div class="container">
   <div class="row">
     <h1 class="mx-auto pt-3 pb-1">ブックマークしたアニメ一覧</h1>
   </div>
-  <div class="container">
-    <div class="row result">
-    <div class="col-11 mx-auto">
-      <div class="d-flex align-content-start flex-wrap mt-4">
-        <% if @animes.present? %>
-          <% @animes.each do |anime| %>
-          <div class="mx-5 my-4 out-line">
-           <p><%= link_to anime.title, anime_path(anime.id) %></p>
+    <div class="d-flex align-content-start flex-wrap mt-4">
+      <!--<%# if @customer.bookmarks.present? %>-->
+        <% @customer_animes.each do |bookmark| %>
+          <div class="col-md-10">
+            <div class="card mb-4 mt-4 shadow-sm">
+              <div class="card-body">
+                <%= link_to anime_path(bookmark.anime_id) do %>
+                  <div class="col d-flex align-items-center">
+                    <img class="card-img-top<%=bookmark.anime_id%> img-fluid" alt="Card image cap" style="width: 15%;">
+                    <p class="mt-3 ml-4 card-title<%=bookmark.anime_id%>"></p>
+                  </div>
+                <% end %>
+              </div>
+            </div>
           </div>
-          <% end %>
-        <% else %>
-          <p class="mx-auto white">ブックマークしたアニメがありません</p>
         <% end %>
-      </div>
+      <%# else %>
+        <!--<p class="mx-auto white">ブックマークしたアニメがありません</p>-->
+      <%# end %>
     </div>
-</div>
   </div>
 </div>
+<script>get_animation_title(<%= @customer_animes.pluck("anime_id") %>)</script>
