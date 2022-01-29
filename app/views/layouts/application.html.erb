@@ -4,22 +4,23 @@
     <title>Anieva</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="stylesheet" href="Content/bootstrap.css" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="Scripts/bootstrap.js"></script>
   </head>
 
-  <header>
-    <%= render 'layouts/header' %>
-  </header>
+  <%= render 'layouts/header' %>
 
-  <body>
-    <div class="text-center">
-      <%= flash[:notice] %>
+  <body style="background-color:#f4fff4;">
+    <div class="container">
+      <div class="text-center">
+       <%= flash[:notice] %>
+      </div>
+      <%= yield %>
     </div>
-
-    <%= yield %>
   </body>
-  <footer>
 
-  </footer>
+  <%= render 'layouts/footer' %>
+
 </html>
