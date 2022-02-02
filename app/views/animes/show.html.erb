@@ -6,8 +6,12 @@
   <div>
     <p><%= link_to "コメント一覧", anime_comments_path(@anime.id) %></p>
   </div>
-  <div class="mb-4">
-   <%= render 'bookmarks/bookmark_area', anime: @anime %>
+  <div class="mb-2">
+    <% if customer_signed_in? %>
+      <%= render 'bookmarks/bookmark_area', anime: @anime %>
+    <% else %>
+     <div></div>
+    <% end %>
 　</div>
 
   <%= form_with(model:[@anime,@post], url: anime_post_index_path(@anime.id), local: true) do |f| %>

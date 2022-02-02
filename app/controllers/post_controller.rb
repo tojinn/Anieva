@@ -4,6 +4,7 @@ class PostController < ApplicationController
     comment = current_customer.posts.new(post_params)
     comment.anime_id = anime.id
     comment_count = Post.where(anime_id: params[:anime_id]).where(customer_id: current_customer.id).count
+    comment.score = Language.get_data(post_params[:comment])
     if comment.valid?
       if comment_count < 1
         comment.save

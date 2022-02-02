@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_24_075513) do
+ActiveRecord::Schema.define(version: 2022_02_02_060125) do
 
   create_table "animes", force: :cascade do |t|
     t.string "title"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2022_01_24_075513) do
     t.integer "customer_id"
     t.integer "anime_id"
     t.float "rate"
+    t.decimal "score", precision: 5, scale: 3
   end
 
   create_table "relationships", force: :cascade do |t|
