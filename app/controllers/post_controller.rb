@@ -5,6 +5,7 @@ class PostController < ApplicationController
     comment.anime_id = anime.id
     comment_count = Post.where(anime_id: params[:anime_id]).where(customer_id: current_customer.id).count
     comment.score = Language.get_data(post_params[:comment])
+    #1つのアニメに対して1度しかコメントできないようにする記述
     if comment.valid?
       if comment_count < 1
         comment.save
