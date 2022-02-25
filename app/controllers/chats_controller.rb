@@ -4,6 +4,7 @@ class ChatsController < ApplicationController
     @customer = Customer.find(params[:id])
     rooms = current_customer.user_rooms.pluck(:room_id)
     user_rooms = UserRoom.find_by(customer_id: @customer.id, room_id: rooms)
+    #部屋が作られていなかったら新しく部屋を作る記述
     if user_rooms.nil?
      @room = Room.new
      @room.save
