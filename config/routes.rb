@@ -9,7 +9,7 @@ Rails.application.routes.draw do
    resources :animes do
     resources :post, only: [:create, :destroy]
     resources :comments, only: [:index, :show]
-    resource :bookmarks, only: [:create, :destroy]#後で変更
+    resource :bookmarks, only: [:create, :destroy]
      collection do
       get :bookmarks
     end
