@@ -21,7 +21,6 @@
 //= require turbolinks
 //= require_tree .
 
-// （API_KEY には、"取得したAPIキー" を記述）
 const API_KEY = "8526c7df612efdbc139279c7e3cf8b4c";
 const ANNICT_API_KEY = "LdKPXoixYTg1OQ5etphaoz1b4UcGcYtawOAdcwYoS4I"
 $(function(){
