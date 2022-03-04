@@ -13,7 +13,7 @@
      <div></div>
     <% end %>
 　</div>
-
+　<%# アニメの評価と感想を送信する記述 %>
   <%= form_with(model:[@anime,@post], url: anime_post_index_path(@anime.id), local: true) do |f| %>
     <div class="form-group">
      <%= f.text_area :comment, rows:'5',placeholder: "感想をここに", class: 'form-control mb-3' %>
