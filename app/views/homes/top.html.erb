@@ -14,9 +14,8 @@
         $('.card-title'+anime.id).text(anime.title);
         $('.card-img-top'+anime.id).attr("src",anime.images.facebook.og_image_url);
       });
-      // 位置
     }).fail(function (data) {
-        //通信失敗
+        
         alert('通信に失敗しました。');
     });
   }
