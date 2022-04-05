@@ -52,7 +52,6 @@
         $('.card-img-top'+anime.id).attr("src",anime.images.facebook.og_image_url);
       });
     }).fail(function (data) {
-      //通信失敗
       alert('通信に失敗しました。');
     });
 }
@@ -60,6 +59,6 @@
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
     starHalf: "<%= asset_path('star-half.png') %>",
-    scoreName: 'post[rate]' //登録するモデル名とカラム名を記述
+    scoreName: 'post[rate]'
   });
 </script>
