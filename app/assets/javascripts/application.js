@@ -87,6 +87,6 @@ $(function(){
       });
     }).fail(function (data) {
       
-      alert('通信に失敗しました。');
+      alert('に失敗しました。');
     });
 }
