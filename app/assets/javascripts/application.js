@@ -87,6 +87,6 @@ $(function(){
       });
     }).fail(function (data) {
       
-      alert('に失敗しました。');
+      alert('検索に失敗しました。');
     });
 }
