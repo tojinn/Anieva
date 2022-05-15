@@ -30,7 +30,7 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @customer.update(is_deleted: true)
     reset_session
-    flash[:notice] = "退会処理を実行いたしました"
+    flash[:notice] = "退会処理を実行しました。"
     redirect_to new_customer_session_path
   end
 
