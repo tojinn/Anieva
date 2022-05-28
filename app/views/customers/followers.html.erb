@@ -16,7 +16,8 @@
      <% @follower_customers.each do |customer| %>
       <tr>
         <td><%= link_to customer.name, customer_path(customer.id) %></td>
-        <td><%= "フォロー #{customer.followings.count}" %></td>
+        <%#フォロー、フォロワー数をカウントする記述%>
+        <td><%= "フォロー #{customer.followings.count}" %></td> 
         <td><%= "フォロワー数: #{customer.followers.count}" %></td>
         <td>
          <% unless current_customer == customer %>
